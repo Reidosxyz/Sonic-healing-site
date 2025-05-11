@@ -5,52 +5,107 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>REIDOS Sonic Healing</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1a1a40 0%, #2d006e 100%);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 1px;
+    }
+    .glow-link {
+      transition: all 0.2s cubic-bezier(.4,2,.6,1);
+      box-shadow: 0 0 0px #a78bfa;
+    }
+    .glow-link:hover {
+      color: #fff !important;
+      transform: scale(1.12);
+      text-shadow: 0 0 8px #a78bfa, 0 0 16px #a78bfa;
+      box-shadow: 0 0 12px #a78bfa, 0 0 24px #a78bfa;
+    }
+    .glow-btn {
+      box-shadow: 0 0 0px #6366f1;
+      transition: all 0.2s cubic-bezier(.4,2,.6,1);
+    }
+    .glow-btn:hover {
+      box-shadow: 0 0 16px #6366f1, 0 0 32px #a78bfa;
+      transform: scale(1.06) translateY(-2px);
+      background: linear-gradient(90deg, #a78bfa, #6366f1);
+      color: #fff;
+    }
+    .glow-card {
+      transition: all 0.2s cubic-bezier(.4,2,.6,1);
+      box-shadow: 0 0 0px #a78bfa;
+    }
+    .glow-card:hover {
+      box-shadow: 0 0 24px #a78bfa, 0 0 48px #6366f1;
+      transform: scale(1.03) translateY(-4px);
+      border: 1.5px solid #a78bfa;
+    }
+    .animated-bg {
+      background: linear-gradient(270deg, #1a1a40, #2d006e, #a78bfa, #6366f1, #1a1a40);
+      background-size: 400% 400%;
+      animation: gradientMove 18s ease infinite;
+    }
+    @keyframes gradientMove {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+  </style>
 </head>
-<body class="bg-gray-900 text-white">
+<body class="text-white animated-bg">
   <header class="bg-gradient-to-r from-purple-700 to-indigo-600 p-6">
     <div class="container mx-auto flex justify-between items-center">
       <h1 class="text-3xl font-bold">REIDOS Sonic Healing</h1>
       <nav>
-        <a href="#about" class="mx-4 hover:underline">About</a>
-        <a href="#videos" class="mx-4 hover:underline">Videos</a>
-        <a href="#guides" class="mx-4 hover:underline">Guides</a>
-        <a href="#subscribe" class="mx-4 hover:underline">Subscribe</a>
-        <a href="#support" class="mx-4 hover:underline">Support & Shop</a>
-        <a href="https://www.youtube.com/@reidos1/community" target="_blank" class="mx-4 hover:underline">Community</a>
-        <a href="#contact" class="mx-4 hover:underline">Contact</a>
+        <a href="#about" class="mx-4 glow-link">About</a>
+        <a href="#videos" class="mx-4 glow-link">Videos</a>
+        <a href="#guides" class="mx-4 glow-link">Guides</a>
+        <a href="#subscribe" class="mx-4 glow-link">Subscribe</a>
+        <a href="#support" class="mx-4 glow-link">Support & Shop</a>
+        <a href="https://www.youtube.com/@reidos1/community" target="_blank" class="mx-4 glow-link">Community</a>
+        <a href="#contact" class="mx-4 glow-link">Contact</a>
       </nav>
     </div>
   </header>
 
   <section id="hero" class="container mx-auto text-center py-20">
-    <h2 class="text-5xl font-extrabold mb-4">Elevate Your Mind with Sound</h2>
+    <h2 class="text-5xl font-extrabold mb-4 drop-shadow-lg">Elevate Your Mind with Sound</h2>
     <p class="text-xl mb-8">Experience deep healing, focus, and transformation through science-backed binaural beats and meditation soundscapes.</p>
-    <a href="#videos" class="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 px-6 rounded-lg">Explore Videos</a>
+    <a href="#videos" class="glow-btn bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 px-6 rounded-lg">Explore Videos</a>
   </section>
+
+  <svg viewBox="0 0 1440 100" class="w-full" style="margin-bottom:-2px;"><path fill="#2d006e" fill-opacity="1" d="M0,64L48,58.7C96,53,192,43,288,53.3C384,64,480,96,576,101.3C672,107,768,85,864,80C960,75,1056,85,1152,80C1248,75,1344,53,1392,42.7L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
 
   <section id="videos" class="container mx-auto py-16">
     <h3 class="text-4xl font-semibold mb-8 text-center">Featured Videos</h3>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <!-- Altered Ascension State -->
-      <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+      <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden glow-card">
         <iframe class="w-full h-48" src="https://www.youtube.com/embed/CciCe07IISk?start=37" frameborder="0" allowfullscreen></iframe>
         <div class="p-4">
           <h4 class="text-2xl font-bold">Altered Ascension State</h4>
-          <p class="mt-2">4 Hz Theta Frequency Meditation – 1 Hour</p>
+          <p class="mt-2">32 Hz Gamma Frequency Meditation – 1 Hour</p>
         </div>
       </div>
 
       <!-- Altered Focus State -->
-      <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+      <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden glow-card">
         <iframe class="w-full h-48" src="https://www.youtube.com/embed/BbiSwPPIMYo?start=1" frameborder="0" allowfullscreen></iframe>
         <div class="p-4">
           <h4 class="text-2xl font-bold">Altered Focus State</h4>
-          <p class="mt-2">Beta Frequency Focus Session – 1 Hour</p>
+          <p class="mt-2">18 Hz Beta Frequency Meditation – 1 Hour</p>
         </div>
       </div>
 
       <!-- Altered Calm State -->
-      <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+      <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden glow-card">
         <iframe class="w-full h-48" src="https://www.youtube.com/embed/59Ym8tVn4vQ" frameborder="0" allowfullscreen></iframe>
         <div class="p-4">
           <h4 class="text-2xl font-bold">Altered Calm State</h4>
@@ -64,10 +119,10 @@
     <h3 class="text-4xl font-semibold mb-8 text-center">Healing Guides</h3>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <!-- Alpha Wave Guide -->
-      <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors">
+      <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors glow-card">
         <h4 class="text-2xl font-bold mb-4">Alpha Wave Guide</h4>
         <p class="text-gray-300 mb-4">8-12 Hz frequency range for relaxation and stress reduction</p>
-        <a href="Guides/alpha-wave-guide.pdf" class="inline-flex items-center bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
+        <a href="Guides/alpha-wave-guide.pdf" class="inline-flex items-center glow-btn bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
           </svg>
@@ -76,10 +131,10 @@
       </div>
 
       <!-- Beta Wave Guide -->
-      <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors">
+      <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors glow-card">
         <h4 class="text-2xl font-bold mb-4">Beta Wave Guide</h4>
         <p class="text-gray-300 mb-4">13-30 Hz frequency range for focus and concentration</p>
-        <a href="Guides/beta-wave-guide.pdf" class="inline-flex items-center bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
+        <a href="Guides/beta-wave-guide.pdf" class="inline-flex items-center glow-btn bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
           </svg>
@@ -88,10 +143,10 @@
       </div>
 
       <!-- Delta Wave Guide -->
-      <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors">
+      <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors glow-card">
         <h4 class="text-2xl font-bold mb-4">Delta Wave Guide</h4>
         <p class="text-gray-300 mb-4">0.5-4 Hz frequency range for deep sleep and healing</p>
-        <a href="Guides/delta-wave-guide.pdf" class="inline-flex items-center bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
+        <a href="Guides/delta-wave-guide.pdf" class="inline-flex items-center glow-btn bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
           </svg>
@@ -100,10 +155,10 @@
       </div>
 
       <!-- Gamma Wave Guide -->
-      <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors">
+      <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors glow-card">
         <h4 class="text-2xl font-bold mb-4">Gamma Wave Guide</h4>
         <p class="text-gray-300 mb-4">30-100 Hz frequency range for high-level processing</p>
-        <a href="Guides/gamma-wave-guide.pdf" class="inline-flex items-center bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
+        <a href="Guides/gamma-wave-guide.pdf" class="inline-flex items-center glow-btn bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
           </svg>
@@ -112,10 +167,10 @@
       </div>
 
       <!-- Theta Wave Guide -->
-      <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors">
+      <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors glow-card">
         <h4 class="text-2xl font-bold mb-4">Theta Wave Guide</h4>
         <p class="text-gray-300 mb-4">4-8 Hz frequency range for meditation and creativity</p>
-        <a href="Guides/theta-wave-guide.pdf" class="inline-flex items-center bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
+        <a href="Guides/theta-wave-guide.pdf" class="inline-flex items-center glow-btn bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
           </svg>
@@ -125,26 +180,28 @@
     </div>
   </section>
 
-  <section id="subscribe" class="container mx-auto py-16 bg-gray-800 rounded-lg p-8">
+  <section id="subscribe" class="container mx-auto py-16 bg-gray-800 rounded-lg p-8 mt-16">
     <h3 class="text-4xl font-semibold mb-4 text-center">Subscribe to the Channel</h3>
     <p class="text-center mb-6">Stay up-to-date with all the latest releases and sound experiences.</p>
     <div class="text-center">
-      <a href="https://www.youtube.com/channel/UClVT69ecEKpH01zVufbk2jQ?sub_confirmation=1" class="bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 px-6 rounded-lg">Subscribe Now</a>
+      <a href="https://www.youtube.com/channel/UClVT69ecEKpH01zVufbk2jQ?sub_confirmation=1" class="glow-btn bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 px-6 rounded-lg">Subscribe Now</a>
     </div>
   </section>
+
+  <svg viewBox="0 0 1440 100" class="w-full" style="margin-top:-2px;"><path fill="#2d006e" fill-opacity="1" d="M0,32L48,42.7C96,53,192,75,288,80C384,85,480,107,576,101.3C672,96,768,64,864,53.3C960,43,1056,53,1152,58.7C1248,64,1344,64,1392,64L1440,64L1440,100L1392,100C1344,100,1248,100,1152,100C1056,100,960,100,864,100C768,100,672,100,576,100C480,100,384,100,288,100C192,100,96,100,48,100L0,100Z"></path></svg>
 
   <section id="support" class="container mx-auto py-16">
     <h3 class="text-4xl font-semibold mb-8 text-center">Support & Shop</h3>
     <div class="flex flex-col md:flex-row justify-center items-center gap-8">
-      <div class="bg-gray-800 rounded-lg p-6 flex-1 max-w-md text-center">
+      <div class="bg-gray-800 rounded-lg p-6 flex-1 max-w-md text-center glow-card">
         <h4 class="text-2xl font-bold mb-2">Tip with Brave</h4>
         <p class="mb-4">If you use the Brave browser, you can support me with a BAT tip!</p>
-        <a href="https://publishers.basicattentiontoken.org/en/c/HK4APswbk4" target="_blank" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold py-2 px-4 rounded-lg transition-colors">Tip via Brave</a>
+        <a href="https://publishers.basicattentiontoken.org/en/c/HK4APswbk4" target="_blank" class="inline-block glow-btn bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold py-2 px-4 rounded-lg transition-colors">Tip via Brave</a>
       </div>
-      <div class="bg-gray-800 rounded-lg p-6 flex-1 max-w-md text-center">
+      <div class="bg-gray-800 rounded-lg p-6 flex-1 max-w-md text-center glow-card">
         <h4 class="text-2xl font-bold mb-2">Visit the Shop</h4>
         <p class="mb-4">Check out the YouTube Store for exclusive merch and digital products.</p>
-        <a href="https://reidos-sonic-healing-shop.fourthwall.com/en-aud/" target="_blank" class="inline-block bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors">Go to Store</a>
+        <a href="https://reidos-sonic-healing-shop.fourthwall.com/en-aud/" target="_blank" class="inline-block glow-btn bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors">Go to Store</a>
       </div>
     </div>
   </section>
