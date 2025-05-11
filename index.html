@@ -250,6 +250,24 @@
     </div>
   </section>
 
+  <section id="stats" class="container mx-auto py-16 text-center">
+    <h3 class="text-4xl font-semibold mb-8">Channel Stats</h3>
+    <div class="flex flex-wrap justify-center gap-12">
+      <div>
+        <div class="text-5xl font-extrabold text-indigo-400" id="subs-count">0</div>
+        <div class="mt-2 text-lg">Subscribers</div>
+      </div>
+      <div>
+        <div class="text-5xl font-extrabold text-indigo-400" id="views-count">0</div>
+        <div class="mt-2 text-lg">Total Views</div>
+      </div>
+      <div>
+        <div class="text-5xl font-extrabold text-indigo-400" id="videos-count">0</div>
+        <div class="mt-2 text-lg">Videos</div>
+      </div>
+    </div>
+  </section>
+
   <section id="playlists" class="container mx-auto py-16">
     <h3 class="text-4xl font-semibold mb-8 text-center">Recommended Playlists</h3>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -327,3 +345,41 @@
   </footer>
 </body>
 </html>
+
+<script>
+function animateValue(id, start, end, duration) {
+  let range = end - start;
+  let current = start;
+  let increment = end > start ? 1 : -1;
+  let stepTime = Math.abs(Math.floor(duration / range));
+  const obj = document.getElementById(id);
+  if (!obj) return;
+  let timer = setInterval(function() {
+    current += increment;
+    obj.textContent = current.toLocaleString();
+    if (current == end) {
+      clearInterval(timer);
+    }
+  }, stepTime);
+}
+
+async function fetchYouTubeStats() {
+  const apiKey = 'YOUR_API_KEY_HERE'; // <-- Paste your API key here
+  const channelId = 'UClVT69ecEKpH01zVufbk2jQ';
+  const url = `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${apiKey}`;
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    if (data.items && data.items.length > 0) {
+      const stats = data.items[0].statistics;
+      animateValue('subs-count', 0, parseInt(stats.subscriberCount), 1800);
+      animateValue('views-count', 0, parseInt(stats.viewCount), 2000);
+      animateValue('videos-count', 0, parseInt(stats.videoCount), 1200);
+    }
+  } catch (e) {
+    console.error('Failed to fetch YouTube stats:', e);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', fetchYouTubeStats);
+</script>
