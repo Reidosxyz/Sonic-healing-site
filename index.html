@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>REIDOS Sonic Healing</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
@@ -21,6 +22,19 @@
     .glow-link {
       transition: all 0.2s cubic-bezier(.4,2,.6,1);
       box-shadow: 0 0 0px #a78bfa;
+      position: relative;
+    }
+    .glow-link::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0; right: 0; bottom: -4px; height: 3px;
+      background: linear-gradient(90deg, #a78bfa, #ff00cc, #00ffe7, #a78bfa);
+      border-radius: 2px;
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+      transform: scaleX(0.7);
+      z-index: 1;
     }
     .glow-link:hover {
       color: #fff !important;
@@ -28,24 +42,55 @@
       text-shadow: 0 0 8px #a78bfa, 0 0 16px #a78bfa;
       box-shadow: 0 0 12px #a78bfa, 0 0 24px #a78bfa;
     }
+    .glow-link:hover::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
     .glow-btn {
       box-shadow: 0 0 0px #6366f1;
       transition: all 0.2s cubic-bezier(.4,2,.6,1);
+      border: 2px solid transparent;
+      background-clip: padding-box;
+      position: relative;
+      z-index: 1;
+    }
+    .glow-btn::before {
+      content: '';
+      position: absolute;
+      top: -2px; left: -2px; right: -2px; bottom: -2px;
+      z-index: -1;
+      border-radius: 0.5rem;
+      background: linear-gradient(90deg, #a78bfa, #ff00cc, #00ffe7, #a78bfa);
+      opacity: 0.7;
+      filter: blur(6px);
+      transition: opacity 0.2s;
+    }
+    .glow-btn:hover::before {
+      opacity: 1;
     }
     .glow-btn:hover {
-      box-shadow: 0 0 16px #6366f1, 0 0 32px #a78bfa;
-      transform: scale(1.06) translateY(-2px);
+      box-shadow: 0 0 32px #ff00cc, 0 0 64px #00ffe7;
+      transform: scale(1.08) translateY(-2px) rotate(-1deg);
       background: linear-gradient(90deg, #a78bfa, #6366f1);
       color: #fff;
+      border-color: #ff00cc;
     }
     .glow-card {
-      transition: all 0.2s cubic-bezier(.4,2,.6,1);
-      box-shadow: 0 0 0px #a78bfa;
+      transition: box-shadow 0.35s cubic-bezier(.4,2,.6,1), transform 0.35s cubic-bezier(.4,2,.6,1), border 0.35s cubic-bezier(.4,2,.6,1);
+      box-shadow: 0 0 8px #a78bfa;
+      border-radius: 1.5rem;
+      background: rgba(30, 22, 60, 0.92);
+      border: 1.5px solid rgba(167,139,250,0.18);
+      position: relative;
+      overflow: hidden;
     }
     .glow-card:hover {
       box-shadow: 0 0 24px #a78bfa, 0 0 48px #6366f1;
       transform: scale(1.03) translateY(-4px);
-      border: 1.5px solid #a78bfa;
+      border: 2px solid #a78bfa;
+    }
+    .glow-card-spring {
+      transition: box-shadow 0.35s cubic-bezier(.4,2,.6,1), transform 0.45s cubic-bezier(0.68, -0.55, 0.27, 1.55), border 0.35s cubic-bezier(.4,2,.6,1);
     }
     .animated-bg {
       background: linear-gradient(270deg, #1a1a40, #2d006e, #a78bfa, #6366f1, #1a1a40);
@@ -57,9 +102,38 @@
       50% {background-position: 100% 50%;}
       100% {background-position: 0% 50%;}
     }
+    #particles-js {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: -1;
+      pointer-events: none;
+    }
+    main, header, section, footer {
+      position: relative;
+      z-index: 1;
+    }
   </style>
 </head>
 <body class="text-white animated-bg">
+  <div id="particles-js"></div>
+  <script>
+    tsParticles.load("particles-js", {
+      fullScreen: false,
+      particles: {
+        number: { value: 60 },
+        color: { value: ["#a78bfa", "#ff00cc", "#00ffe7"] },
+        shape: { type: "circle" },
+        opacity: { value: 0.25 },
+        size: { value: 3, random: { enable: true, minimumValue: 1 } },
+        move: { enable: true, speed: 1.2, direction: "none", random: true, straight: false, outModes: { default: "out" } },
+        links: { enable: true, distance: 120, color: "#a78bfa", opacity: 0.15, width: 1 },
+      },
+      interactivity: {
+        events: { onHover: { enable: false }, onClick: { enable: false } },
+      },
+      detectRetina: true,
+    });
+  </script>
   <header class="bg-gradient-to-r from-purple-700 to-indigo-600 p-6">
     <div class="container mx-auto flex justify-between items-center">
       <h1 class="text-3xl font-bold">REIDOS Sonic Healing</h1>
@@ -119,7 +193,7 @@
     <h3 class="text-4xl font-semibold mb-8 text-center">Healing Guides</h3>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
       <!-- Delta Wave Guide -->
-      <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors glow-card">
+      <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors glow-card glow-card-spring">
         <h4 class="text-2xl font-bold mb-4">Delta Wave Guide</h4>
         <p class="text-gray-300 mb-4">0.5-4 Hz frequency range for deep sleep and healing</p>
         <a href="Guides/delta-wave-guide.pdf" class="inline-flex items-center glow-btn bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
@@ -130,7 +204,7 @@
         </a>
       </div>
       <!-- Theta Wave Guide -->
-      <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors glow-card">
+      <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors glow-card glow-card-spring">
         <h4 class="text-2xl font-bold mb-4">Theta Wave Guide</h4>
         <p class="text-gray-300 mb-4">4-8 Hz frequency range for meditation and creativity</p>
         <a href="Guides/theta-wave-guide.pdf" class="inline-flex items-center glow-btn bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
@@ -141,7 +215,7 @@
         </a>
       </div>
       <!-- Alpha Wave Guide -->
-      <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors glow-card">
+      <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors glow-card glow-card-spring">
         <h4 class="text-2xl font-bold mb-4">Alpha Wave Guide</h4>
         <p class="text-gray-300 mb-4">8-12 Hz frequency range for relaxation and stress reduction</p>
         <a href="Guides/alpha-wave-guide.pdf" class="inline-flex items-center glow-btn bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
@@ -152,7 +226,7 @@
         </a>
       </div>
       <!-- Beta Wave Guide -->
-      <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors glow-card">
+      <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors glow-card glow-card-spring">
         <h4 class="text-2xl font-bold mb-4">Beta Wave Guide</h4>
         <p class="text-gray-300 mb-4">13-30 Hz frequency range for focus and concentration</p>
         <a href="Guides/beta-wave-guide.pdf" class="inline-flex items-center glow-btn bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
@@ -163,7 +237,7 @@
         </a>
       </div>
       <!-- Gamma Wave Guide -->
-      <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors glow-card">
+      <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors glow-card glow-card-spring">
         <h4 class="text-2xl font-bold mb-4">Gamma Wave Guide</h4>
         <p class="text-gray-300 mb-4">30-100 Hz frequency range for high-level processing</p>
         <a href="Guides/gamma-wave-guide.pdf" class="inline-flex items-center glow-btn bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
